@@ -1,0 +1,34 @@
+# Dependencies
+/node_modules
+/package-lock.json
+/npm-debug.log*
+
+# Production/Build Output
+/dist # Compiled TypeScript files will go here
+
+# IDE/Editor files (VS Code)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Environment/Configuration
+.env
+.env.development
+.env.production
+.env.test
+
+# Testing
+/coverage
+/jest-cache
+
+# Database/Persistence
+# We do NOT want to commit the actual database files
+sweetshop.sqlite 
+*.db 
+
+# Docker
+# Docker is used for dev/test, but we don't commit temporary files
+.docker/
+!docker-compose.yml # Ensure the main config is NOT ignored
