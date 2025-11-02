@@ -1,0 +1,21 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  # Service name: postgres
+  postgres:
+    image: postgres:14 # Use a stable version of PostgreSQL
+    restart: always
+    environment:
+      # These credentials MUST match the ones in src/shared/database/data-source.ts
+      POSTGRES_USER: sweetuser
+      POSTGRES_PASSWORD: sweetpassword
+      POSTGRES_DB: sweetshop_db
+    ports:
+      # Map container port 5432 to host port 5432
+      - '5432:5432'
+    volumes:
+      # Persist the database data across container restarts
+      - sweetshop_data:/var/lib/postgresql/data
+
+volumes:
+  sweetshop_data:
