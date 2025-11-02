@@ -1,5 +1,5 @@
 // test/auth.e2e-spec.ts
-import * as request from 'supertest';
+import request from 'supertest';
 import app from '../src/app'; // Import our Express application instance
 
 describe('Auth E2E: User Registration', () => {
