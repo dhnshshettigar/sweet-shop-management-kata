@@ -44,25 +44,34 @@ describe('Auth E2E: User Registration', () => {
 });
 
 describe('Auth E2E: User Login', () => {
-  const loginUrl = '/api/auth/login';
+    const loginUrl = '/api/auth/login';
 
-  // We use a predefined user we will register in the setup
-  const loginCredentials = {
-    email: 'login.user@sweetshop.com',
-    password: 'SecureP@ss2025',
-  };
+    // We use a predefined user we will register in the setup
+    const loginCredentials = {
+        email: 'login.user@sweetshop.com',
+        password: 'SecureP@ss2025',
+    };
 
-  // 🔴 RED PHASE TEST 3: Should fail because the endpoint is not yet implemented
-  it('POST ' + loginUrl + ' -> Should return 200 OK and a JWT token for valid credentials', async () => {
-    // Note: We need a test hook here to register the user BEFORE this test runs.
-    
-    // 1. Act: Send the login request
-    const response = await request(app)
-      .post(loginUrl)
-      .send(loginCredentials);
+    // 💡 NEW: Register the user *before* running the login test suite
+    beforeAll(async () => {
+        // 1. Register the user needed for the login test
+        await request(app)
+            .post('/api/auth/register')
+            .send(loginCredentials)
+            .expect(201); // Assert success
+    });
 
-    // 2. Assert: We expect 200 OK and a response body containing an access_token
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toHaveProperty('access_token');
-  });
+    // 🔴 RED PHASE TEST 3: Should fail because the endpoint is not yet implemented
+    it('POST ' + loginUrl + ' -> Should return 200 OK and a JWT token for valid credentials', async () => {
+        // Note: We need a test hook here to register the user BEFORE this test runs.
+
+        // 1. Act: Send the login request
+        const response = await request(app)
+            .post(loginUrl)
+            .send(loginCredentials);
+
+        // 2. Assert: We expect 200 OK and a response body containing an access_token
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toHaveProperty('access_token');
+    });
 });
