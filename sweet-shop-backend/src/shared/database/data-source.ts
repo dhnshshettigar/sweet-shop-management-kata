@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
     
     // Connection details matching your Docker setup
     host: 'localhost',
-    port: 5432,
+    port: 5433,
     username: 'sweetuser',
     password: 'sweetpassword',
     database: 'sweetshop_db',
