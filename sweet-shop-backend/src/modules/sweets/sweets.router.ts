@@ -17,6 +17,8 @@ router.get('/', (req, res) => {
 
 router.get('/', sweetController.findAll.bind(sweetController));
 
+// Endpoint 2: POST /api/sweets (Add New Sweet)
+router.post('/', sweetController.create.bind(sweetController));
 // Other protected routes will go here: POST, PUT, DELETE, SEARCH
 
 export default router;
