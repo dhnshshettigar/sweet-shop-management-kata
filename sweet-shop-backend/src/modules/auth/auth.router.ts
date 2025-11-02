@@ -8,4 +8,7 @@ const router = Router();
 // We use the .bind() method to ensure 'this' context is correct inside the controller method.
 router.post('/register', authController.register.bind(authController));
 
+// Route definition: POST /login ⬅️ NEW ROUTE
+router.post('/login', authController.login.bind(authController));
+
 export default router;
