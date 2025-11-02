@@ -7,8 +7,7 @@ import { RegisterUserDto } from './dto/register-user.dto';
 import { Repository } from 'typeorm';
 
 // ⚠️ WARNING: This should be read from a secure environment variable (e.g., process.env.JWT_SECRET)
-// For now, we hardcode it to allow the code to compile and test.
-const JWT_SECRET = 'YOUR_SUPER_SECRET_KEY_NEVER_HARDCODE'; 
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-for-dev';
 
 // The User Repository from TypeORM
 const userRepository: Repository<User> = AppDataSource.getRepository(User);
