@@ -1,4 +1,5 @@
 // src/app.ts
+import authRouter from './modules/auth/auth.router'
 import express, { Request, Response, NextFunction } from 'express';
 import { json } from 'body-parser';
 import * as dotenv from 'dotenv';
@@ -13,7 +14,7 @@ const app = express();
 app.use(json()); // Middleware to parse incoming JSON request bodies
 
 // 2. Global Prefix (Auth router will be mounted here later)
-// app.use('/api/auth', authRouter); 
+app.use('/api/auth', authRouter); 
 
 // 3. Simple health check endpoint
 app.get('/', (req: Request, res: Response) => {
