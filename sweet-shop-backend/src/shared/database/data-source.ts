@@ -3,6 +3,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from '../../modules/auth/entities/user.entity'; 
+import { Sweet } from '../../modules/sweets/entities/sweet.entity';
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
     // Essential for development: creates tables based on entities
     synchronize: true, 
     logging: false,
-    entities: [User], // List of all entity classes
+    entities: [User, Sweet], // List of all entity classes
     migrations: [],
     subscribers: [],
 });
