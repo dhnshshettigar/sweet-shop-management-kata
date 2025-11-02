@@ -1,6 +1,7 @@
 // src/modules/sweets/sweets.router.ts
 import { Router } from 'express';
 import { jwtAuthMiddleware } from '../../shared/middleware/auth.middleware'; // ⬅️ IMPORT SECURITY
+import { sweetController } from './sweets.controller';
 
 const router = Router();
 
@@ -13,6 +14,8 @@ router.get('/', (req, res) => {
     // 💡 Minimal implementation to pass the test and allow security check
     res.status(200).json({ data: [] }); 
 });
+
+router.get('/', sweetController.findAll.bind(sweetController));
 
 // Other protected routes will go here: POST, PUT, DELETE, SEARCH
 
