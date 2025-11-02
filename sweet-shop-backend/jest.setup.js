@@ -20,7 +20,8 @@ afterAll(async () => {
 
 // Important for TDD: Clear the database before *each* test file runs
 beforeEach(async () => {
-    // Only truncate the 'users' table for now
-    // We use TRUNCATE with RESTART IDENTITY to reset auto-increment IDs
-    await AppDataSource.query('TRUNCATE TABLE users RESTART IDENTITY CASCADE;');
+    // 💡 FIX: Simplify TRUNCATE syntax and list all tables.
+    // We remove 'RESTART IDENTITY' to fix the syntax error.
+    // The TRUNCATE command must list tables separated by commas.
+    await AppDataSource.query('TRUNCATE TABLE users, sweets CASCADE;'); 
 });
